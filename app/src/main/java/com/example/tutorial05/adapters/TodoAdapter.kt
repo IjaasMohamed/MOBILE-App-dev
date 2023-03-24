@@ -8,9 +8,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tutorial05.R
+import com.example.tutorial05.database.entities.Todo
 
 class TodoAdapter: RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
 
+    lateinit var data:List<Todo>
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
         val cbTodo : CheckBox
         val ivDelete:ImageView
