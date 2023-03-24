@@ -1,5 +1,6 @@
 package com.example.tutorial05.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.tutorial05.database.entities.Todo
 class TodoAdapter: RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
 
     lateinit var data:List<Todo>
+    lateinit var context:Context
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
         val cbTodo : CheckBox
         val ivDelete:ImageView
@@ -21,6 +23,11 @@ class TodoAdapter: RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
             cbTodo = view.findViewById(R.id.cbTodo)
             ivDelete = view.findViewById(R.id.ivDelete)
         }
+    }
+    fun setData(data : List<Todo>, context:Context){
+        this.data =data
+        this.context = context
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +42,7 @@ class TodoAdapter: RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.cbTodo.text = "Sample text"
+        holder.cbTodo.text = data[position].item
 
     }
 
